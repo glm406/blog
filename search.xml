@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>第一篇博客文章</title>
+      <title>vue框架学习笔记</title>
       <link href="/2019/07/22/vue-kuang-jia-xue-xi-bi-ji/"/>
       <url>/2019/07/22/vue-kuang-jia-xue-xi-bi-ji/</url>
       
@@ -92,11 +92,11 @@
     
     
     <entry>
-      <title>hibernate 复杂查询</title>
-      <link href="/2019/06/25/hibernatehql/"/>
-      <url>/2019/06/25/hibernatehql/</url>
+      <title>学习hibernate</title>
+      <link href="/2019/06/25/hibernate-kuang-jia/"/>
+      <url>/2019/06/25/hibernate-kuang-jia/</url>
       
-        <content type="html"><![CDATA[<hr><h1 id="hibernate-复杂查询"><a href="#hibernate-复杂查询" class="headerlink" title="hibernate 复杂查询"></a>hibernate 复杂查询</h1><h1 id="hibernate多表关联查询"><a href="#hibernate多表关联查询" class="headerlink" title="hibernate多表关联查询"></a>hibernate多表关联查询</h1><h2 id="表之间的关系分类"><a href="#表之间的关系分类" class="headerlink" title="表之间的关系分类"></a>表之间的关系分类</h2><blockquote><p>一对一<br>学生和学生卡<br>一对多<br>班级和学生<br>多对多<br>学生和老师<br>需要中间表 t_student_teacher</p></blockquote><h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><pre class=" language-bash"><code class="language-bash">    核心异常：Caused by: org.hibernate.AnnotationException: @OneToOne or @ManyToOne on com.xiaomo.xxxx.model.yyy.Clock.user references an unknown entity: com.xiaomo.zzzz.model.user.User</code></pre><p>今天写一个Action 通过 HQL 查询一个表 出现异常 “More than one row with the given identifier was found”</p><p>问题原因： 数据库出现数据异常 存在多条主键不唯一的数据 (看来ORACLE也会出BUG呀)</p><p>问题解决： 找到数据库表 删除全部数据 然后重新导入 问题没了</p><h1 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h1><pre class=" language-bash"><code class="language-bash">@OneToOne<span class="token punctuation">(</span>fetch<span class="token operator">=</span>FetchType.LAZY<span class="token punctuation">)</span></code></pre>]]></content>
+        <content type="html"><![CDATA[<hr><h1 id="学习hibernate"><a href="#学习hibernate" class="headerlink" title="学习hibernate"></a>学习hibernate</h1><h2 id="一、什么是hibernate框架"><a href="#一、什么是hibernate框架" class="headerlink" title="一、什么是hibernate框架"></a>一、什么是hibernate框架</h2><ol><li>hibernate是一个开源的对象映射框架</li><li>hibernate可以实现数据库中表和实体类的映射关系，自动生成sql语句并执行（全自动）</li><li>hibernate是一个全自动（自动生成sql）的持久层框架，可以采用面向对象的方式来对数据库进行CRUD操作<h2 id="二、hibernate的使用"><a href="#二、hibernate的使用" class="headerlink" title="二、hibernate的使用"></a>二、hibernate的使用</h2><pre class=" language-bash"><code class="language-bash">@Id//主键@Column<span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"user_id"</span><span class="token punctuation">)</span>//定义一个序列@SequenceGenerator<span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"gen"</span>,sequenceName <span class="token operator">=</span> <span class="token string">"seq_t_ssh_user"</span>,allocationSize <span class="token operator">=</span> 1<span class="token punctuation">)</span>//    自增策略@GeneratedValue<span class="token punctuation">(</span>generator <span class="token operator">=</span> <span class="token string">"gen"</span>,strategy <span class="token operator">=</span> GenerationType.SEQUENCE<span class="token punctuation">)</span></code></pre></li></ol>]]></content>
       
       
       <categories>
@@ -117,11 +117,11 @@
     
     
     <entry>
-      <title>学习hibernate</title>
-      <link href="/2019/06/25/hibernate-kuang-jia/"/>
-      <url>/2019/06/25/hibernate-kuang-jia/</url>
+      <title>hibernate 复杂查询</title>
+      <link href="/2019/06/25/hibernatehql/"/>
+      <url>/2019/06/25/hibernatehql/</url>
       
-        <content type="html"><![CDATA[<hr><h1 id="学习hibernate"><a href="#学习hibernate" class="headerlink" title="学习hibernate"></a>学习hibernate</h1><h2 id="一、什么是hibernate框架"><a href="#一、什么是hibernate框架" class="headerlink" title="一、什么是hibernate框架"></a>一、什么是hibernate框架</h2><ol><li>hibernate是一个开源的对象映射框架</li><li>hibernate可以实现数据库中表和实体类的映射关系，自动生成sql语句并执行（全自动）</li><li>hibernate是一个全自动（自动生成sql）的持久层框架，可以采用面向对象的方式来对数据库进行CRUD操作<h2 id="二、hibernate的使用"><a href="#二、hibernate的使用" class="headerlink" title="二、hibernate的使用"></a>二、hibernate的使用</h2><pre class=" language-bash"><code class="language-bash">@Id//主键@Column<span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"user_id"</span><span class="token punctuation">)</span>//定义一个序列@SequenceGenerator<span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"gen"</span>,sequenceName <span class="token operator">=</span> <span class="token string">"seq_t_ssh_user"</span>,allocationSize <span class="token operator">=</span> 1<span class="token punctuation">)</span>//    自增策略@GeneratedValue<span class="token punctuation">(</span>generator <span class="token operator">=</span> <span class="token string">"gen"</span>,strategy <span class="token operator">=</span> GenerationType.SEQUENCE<span class="token punctuation">)</span></code></pre></li></ol>]]></content>
+        <content type="html"><![CDATA[<hr><h1 id="hibernate-复杂查询"><a href="#hibernate-复杂查询" class="headerlink" title="hibernate 复杂查询"></a>hibernate 复杂查询</h1><h1 id="hibernate多表关联查询"><a href="#hibernate多表关联查询" class="headerlink" title="hibernate多表关联查询"></a>hibernate多表关联查询</h1><h2 id="表之间的关系分类"><a href="#表之间的关系分类" class="headerlink" title="表之间的关系分类"></a>表之间的关系分类</h2><blockquote><p>一对一<br>学生和学生卡<br>一对多<br>班级和学生<br>多对多<br>学生和老师<br>需要中间表 t_student_teacher</p></blockquote><h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><pre class=" language-bash"><code class="language-bash">    核心异常：Caused by: org.hibernate.AnnotationException: @OneToOne or @ManyToOne on com.xiaomo.xxxx.model.yyy.Clock.user references an unknown entity: com.xiaomo.zzzz.model.user.User</code></pre><p>今天写一个Action 通过 HQL 查询一个表 出现异常 “More than one row with the given identifier was found”</p><p>问题原因： 数据库出现数据异常 存在多条主键不唯一的数据 (看来ORACLE也会出BUG呀)</p><p>问题解决： 找到数据库表 删除全部数据 然后重新导入 问题没了</p><h1 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h1><pre class=" language-bash"><code class="language-bash">@OneToOne<span class="token punctuation">(</span>fetch<span class="token operator">=</span>FetchType.LAZY<span class="token punctuation">)</span></code></pre>]]></content>
       
       
       <categories>
