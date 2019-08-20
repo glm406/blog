@@ -4,9 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="redis, 李白—戒酒">
+    <meta name="keywords" content="分层领域模型规约, 李白—戒酒">
     <meta name="description" content="
-简介Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redi">
+分层领域模型规约：
+DO（ Data Object）：与数据库表结构一一对应，通过DAO层向上传输数据源对象。
+DTO（ Data Transfer Object）：数据传输对象，Service或Manager向外传输的对象。
+BO（ B">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>redis | 李白—戒酒</title>
+    <title>分层领域模型规约 | 李白—戒酒</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -258,13 +261,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        redis
+                        分层领域模型规约
                     </div>
                 </div>
             </div>
@@ -286,8 +289,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/redis/" target="_blank">
-                                <span class="chip bg-color">redis</span>
+                            <a href="/tags/java/" target="_blank">
+                                <span class="chip bg-color">java</span>
                             </a>
                         
                     </div>
@@ -298,8 +301,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/redis/" class="post-category" target="_blank">
-                                redis
+                            <a href="/categories/java/" class="post-category" target="_blank">
+                                java
                             </a>
                         
                     </div>
@@ -310,14 +313,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-07-08
+                    2019-08-20
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        280
+                        269
                     </div>
                     
 
@@ -341,28 +344,22 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <hr>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助。</p>
-<h1 id="阿里云服务器安装redis"><a href="#阿里云服务器安装redis" class="headerlink" title="阿里云服务器安装redis"></a>阿里云服务器安装redis</h1><h1 id="centos版本"><a href="#centos版本" class="headerlink" title="centos版本"></a>centos版本</h1><pre><code>cat /etc/redhat-release
-CentOS Linux release 7.6.1810 (Core)</code></pre><h1 id="更新yum源"><a href="#更新yum源" class="headerlink" title="更新yum源"></a>更新yum源</h1><p>因为yum默认源软件不全或者版本过低，可以通过安装epel和remi源来安装最新版本的软件</p>
-<h1 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h1><pre><code>yum install -y redis</code></pre><h1 id="redis基本命令"><a href="#redis基本命令" class="headerlink" title="redis基本命令"></a>redis基本命令</h1><pre><code># 启动
-systemctl start redis
-# 停止
-systemctl stop redis
-# 查看运行状态
-systemctl status redis
-# 重启
-systemctl restart redis
-# 开机启动
-systemctl enable redis
-# 开机禁用
-systemctl disable redis</code></pre><h2 id="命令行工具redis-cli基本使用验证"><a href="#命令行工具redis-cli基本使用验证" class="headerlink" title="命令行工具redis-cli基本使用验证"></a>命令行工具redis-cli基本使用验证</h2><pre><code># 启动redis-cli
-redis-cli </code></pre><p>#　redis-cli基本命令</p>
-<pre><code>127.0.0.1:6379&gt; set msg &quot;hello world&quot;
-OK
-127.0.0.1:6379&gt; get msg
-&quot;hello world&quot;</code></pre><h1 id="开启远程连接"><a href="#开启远程连接" class="headerlink" title="开启远程连接"></a>开启远程连接</h1><h2 id="修改配置文件redis-conf"><a href="#修改配置文件redis-conf" class="headerlink" title="修改配置文件redis.conf"></a>修改配置文件redis.conf</h2><pre><code>vim /etc/redis.conf</code></pre><h1 id="开启远程连接-1"><a href="#开启远程连接-1" class="headerlink" title="开启远程连接"></a>开启远程连接</h1><pre><code>修改配置文件redis.conf
+<h1 id="分层领域模型规约："><a href="#分层领域模型规约：" class="headerlink" title="分层领域模型规约："></a>分层领域模型规约：</h1><ol>
+<li>DO（ Data Object）：与数据库表结构一一对应，通过DAO层向上传输数据源对象。</li>
+<li>DTO（ Data Transfer Object）：数据传输对象，Service或Manager向外传输的对象。</li>
+<li>BO（ Business Object）：业务对象。 由Service层输出的封装业务逻辑的对象。</li>
+<li>AO（ Application Object）：应用对象。 在Web层与Service层之间抽象的复用对象模型，极为贴近展示层，复用度不高。</li>
+<li>VO（ View Object）：显示层对象，通常是Web向模板渲染引擎层传输的对象。</li>
+<li>POJO（ Plain Ordinary Java Object）：在本手册中， POJO专指只有setter/getter/toString的简单类，包括DO/DTO/BO/VO等。</li>
+<li>Query：数据查询对象，各层接收上层的查询请求。 注意超过2个参数的查询封装，禁止使用Map类来传输。 </li>
+</ol>
+<h1 id="领域模型命名规约："><a href="#领域模型命名规约：" class="headerlink" title="领域模型命名规约："></a>领域模型命名规约：</h1><ol>
+<li>数据对象：xxxDO，xxx即为数据表名。</li>
+<li>数据传输对象：xxxDTO，xxx为业务领域相关的名称。</li>
+<li>展示对象：xxxVO，xxx一般为网页名称。</li>
+<li>POJO是DO/DTO/BO/VO的统称，禁止命名成xxxPOJO。</li>
+</ol>
 
-vim /etc/redis.conf</code></pre><h1 id="在阿里云控制台将redis默认端口6379-开放"><a href="#在阿里云控制台将redis默认端口6379-开放" class="headerlink" title="在阿里云控制台将redis默认端口6379 开放"></a>在阿里云控制台将redis默认端口6379 开放</h1>
             </div>
             <hr>
 
@@ -517,9 +514,9 @@ vim /etc/redis.conf</code></pre><h1 id="在阿里云控制台将redis默认端�
             </div>
             <br>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
-                    《redis》
+                    《分层领域模型规约》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/08/redis-nei-cun-shu-ju-ku/" property="cc:attributionName" rel="cc:attributionURL">
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/20/fen-ceng-ling-yu-mo-xing-gui-yue/" property="cc:attributionName" rel="cc:attributionURL">
                 李白-戒酒
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
@@ -559,7 +556,7 @@ vim /etc/redis.conf</code></pre><h1 id="在阿里云控制台将redis默认端�
         repo: 'glm406.github.io',
         owner: 'glm406',
         admin: "glm406",
-        id: '2019-07-08T00-00-00',
+        id: '2019-08-20T10-56-52',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -582,44 +579,46 @@ vim /etc/redis.conf</code></pre><h1 id="在阿里云控制台将redis默认端�
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/07/11/wei-fu-wu/">
+                <a href="/2019/08/20/fen-ceng-ling-yu-mo-xing-gui-yue/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="微服务">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="分层领域模型规约">
                         
-                        <span class="card-title">微服务</span>
+                        <span class="card-title">分层领域模型规约</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            微服务
+                            阿里巴巴Java开发手册中的DO、DTO、BO、AO、VO、POJO定义
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/spring-cloud/" class="post-category" target="_blank">
-                                    spring-cloud
+                            <a href="/categories/java/" class="post-category" target="_blank">
+                                    java
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/spring-cloud/" target="_blank">
-                        <span class="chip bg-color">spring-cloud</span>
+                    <a href="/tags/java/" target="_blank">
+                        <span class="chip bg-color">java</span>
                     </a>
                     
                 </div>
@@ -633,44 +632,43 @@ vim /etc/redis.conf</code></pre><h1 id="在阿里云控制台将redis默认端�
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/06/25/hibernatehql/">
+                <a href="/2019/07/22/wei-shi-me-shi-yong-mq/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="hibernate 复杂查询">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt>
                         
-                        <span class="card-title">hibernate 复杂查询</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            hibernate多表关联查询
+                            为什么使用消息队列?
+异步处理
+系统解耦
+流量削峰为什么要使用RabbitMQ？
+基于AMQP协议
+填吐量达到万级
+高并发（Elarng语言开发，高性能）
+高性能
+高可用
+强大的社区支持，以及汗多公司都在使用
+支持插件（监控管理的界面）
+支
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-22
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/hibernate/" class="post-category" target="_blank">
-                                    hibernate
-                                </a>
-                            
+                            <i class="fa fa-user fa-fw"></i>
+                            李白—戒酒
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hibernate/" target="_blank">
-                        <span class="chip bg-color">hibernate</span>
-                    </a>
-                    
                 </div>
                 
             </div>

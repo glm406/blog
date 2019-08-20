@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>分层领域模型规约</title>
+      <link href="/2019/08/20/fen-ceng-ling-yu-mo-xing-gui-yue/"/>
+      <url>/2019/08/20/fen-ceng-ling-yu-mo-xing-gui-yue/</url>
+      
+        <content type="html"><![CDATA[<hr><h1 id="分层领域模型规约："><a href="#分层领域模型规约：" class="headerlink" title="分层领域模型规约："></a>分层领域模型规约：</h1><ol><li>DO（ Data Object）：与数据库表结构一一对应，通过DAO层向上传输数据源对象。</li><li>DTO（ Data Transfer Object）：数据传输对象，Service或Manager向外传输的对象。</li><li>BO（ Business Object）：业务对象。 由Service层输出的封装业务逻辑的对象。</li><li>AO（ Application Object）：应用对象。 在Web层与Service层之间抽象的复用对象模型，极为贴近展示层，复用度不高。</li><li>VO（ View Object）：显示层对象，通常是Web向模板渲染引擎层传输的对象。</li><li>POJO（ Plain Ordinary Java Object）：在本手册中， POJO专指只有setter/getter/toString的简单类，包括DO/DTO/BO/VO等。</li><li>Query：数据查询对象，各层接收上层的查询请求。 注意超过2个参数的查询封装，禁止使用Map类来传输。 </li></ol><h1 id="领域模型命名规约："><a href="#领域模型命名规约：" class="headerlink" title="领域模型命名规约："></a>领域模型命名规约：</h1><ol><li>数据对象：xxxDO，xxx即为数据表名。</li><li>数据传输对象：xxxDTO，xxx为业务领域相关的名称。</li><li>展示对象：xxxVO，xxx一般为网页名称。</li><li>POJO是DO/DTO/BO/VO的统称，禁止命名成xxxPOJO。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/2019/07/22/wei-shi-me-shi-yong-mq/"/>
       <url>/2019/07/22/wei-shi-me-shi-yong-mq/</url>
@@ -71,7 +96,7 @@
       <link href="/2019/07/08/redis-nei-cun-shu-ju-ku/"/>
       <url>/2019/07/08/redis-nei-cun-shu-ju-ku/</url>
       
-        <content type="html"><![CDATA[<hr><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助。</p><h1 id="阿里云服务器安装redis"><a href="#阿里云服务器安装redis" class="headerlink" title="阿里云服务器安装redis"></a>阿里云服务器安装redis</h1><h1 id="centos版本"><a href="#centos版本" class="headerlink" title="centos版本"></a>centos版本</h1><pre><code>cat /etc/redhat-releaseCentOS Linux release 7.6.1810 (Core)</code></pre><h1 id="更新yum源"><a href="#更新yum源" class="headerlink" title="更新yum源"></a>更新yum源</h1><p>因为yum默认源软件不全或者版本过低，可以通过安装epel和remi源来安装最新版本的软件</p><h1 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h1><pre><code>yum install -y redis</code></pre><h1 id="redis基本命令"><a href="#redis基本命令" class="headerlink" title="redis基本命令"></a>redis基本命令</h1><pre><code># 启动systemctl start redis# 停止systemctl stop redis# 查看运行状态systemctl status redis# 重启systemctl restart redis# 开机启动systemctl enable redis# 开机禁用systemctl disable redis</code></pre><h2 id="命令行工具redis-cli基本使用验证"><a href="#命令行工具redis-cli基本使用验证" class="headerlink" title="命令行工具redis-cli基本使用验证"></a>命令行工具redis-cli基本使用验证</h2><pre><code># 启动redis-cliredis-cli </code></pre><p>#　redis-cli基本命令</p><pre><code>127.0.0.1:6379&gt; set msg &quot;hello world&quot;OK127.0.0.1:6379&gt; get msg&quot;hello world&quot;</code></pre><h1 id="开启远程连接"><a href="#开启远程连接" class="headerlink" title="开启远程连接"></a>开启远程连接</h1><h2 id="修改配置文件redis-conf"><a href="#修改配置文件redis-conf" class="headerlink" title="修改配置文件redis.conf"></a>修改配置文件redis.conf</h2><pre><code>vim /etc/redis.conf</code></pre><h1 id="开启远程连接-1"><a href="#开启远程连接-1" class="headerlink" title="开启远程连接"></a>开启远程连接</h1><pre><code>修改配置文件redis.confvim /etc/redis.conf</code></pre><h1 id="在阿里云控制台将redis默认端口开放"><a href="#在阿里云控制台将redis默认端口开放" class="headerlink" title="在阿里云控制台将redis默认端口开放"></a>在阿里云控制台将redis默认端口开放</h1>]]></content>
+        <content type="html"><![CDATA[<hr><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助。</p><h1 id="阿里云服务器安装redis"><a href="#阿里云服务器安装redis" class="headerlink" title="阿里云服务器安装redis"></a>阿里云服务器安装redis</h1><h1 id="centos版本"><a href="#centos版本" class="headerlink" title="centos版本"></a>centos版本</h1><pre><code>cat /etc/redhat-releaseCentOS Linux release 7.6.1810 (Core)</code></pre><h1 id="更新yum源"><a href="#更新yum源" class="headerlink" title="更新yum源"></a>更新yum源</h1><p>因为yum默认源软件不全或者版本过低，可以通过安装epel和remi源来安装最新版本的软件</p><h1 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h1><pre><code>yum install -y redis</code></pre><h1 id="redis基本命令"><a href="#redis基本命令" class="headerlink" title="redis基本命令"></a>redis基本命令</h1><pre><code># 启动systemctl start redis# 停止systemctl stop redis# 查看运行状态systemctl status redis# 重启systemctl restart redis# 开机启动systemctl enable redis# 开机禁用systemctl disable redis</code></pre><h2 id="命令行工具redis-cli基本使用验证"><a href="#命令行工具redis-cli基本使用验证" class="headerlink" title="命令行工具redis-cli基本使用验证"></a>命令行工具redis-cli基本使用验证</h2><pre><code># 启动redis-cliredis-cli </code></pre><p>#　redis-cli基本命令</p><pre><code>127.0.0.1:6379&gt; set msg &quot;hello world&quot;OK127.0.0.1:6379&gt; get msg&quot;hello world&quot;</code></pre><h1 id="开启远程连接"><a href="#开启远程连接" class="headerlink" title="开启远程连接"></a>开启远程连接</h1><h2 id="修改配置文件redis-conf"><a href="#修改配置文件redis-conf" class="headerlink" title="修改配置文件redis.conf"></a>修改配置文件redis.conf</h2><pre><code>vim /etc/redis.conf</code></pre><h1 id="开启远程连接-1"><a href="#开启远程连接-1" class="headerlink" title="开启远程连接"></a>开启远程连接</h1><pre><code>修改配置文件redis.confvim /etc/redis.conf</code></pre><h1 id="在阿里云控制台将redis默认端口6379-开放"><a href="#在阿里云控制台将redis默认端口6379-开放" class="headerlink" title="在阿里云控制台将redis默认端口6379 开放"></a>在阿里云控制台将redis默认端口6379 开放</h1>]]></content>
       
       
       <categories>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://glm406.club/"/>
-  <updated>2019-07-22T16:16:03.455Z</updated>
+  <updated>2019-08-20T03:02:29.277Z</updated>
   <id>http://glm406.club/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>分层领域模型规约</title>
+    <link href="http://glm406.club/2019/08/20/fen-ceng-ling-yu-mo-xing-gui-yue/"/>
+    <id>http://glm406.club/2019/08/20/fen-ceng-ling-yu-mo-xing-gui-yue/</id>
+    <published>2019-08-20T02:56:52.000Z</published>
+    <updated>2019-08-20T03:02:29.277Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;hr&gt;
+&lt;h1 id=&quot;分层领域模型规约：&quot;&gt;&lt;a href=&quot;#分层领域模型规约：&quot; class=&quot;headerlink&quot; title=&quot;分层领域模型规约：&quot;&gt;&lt;/a&gt;分层领域模型规约：&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;DO（ Data
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://glm406.club/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://glm406.club/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
@@ -98,7 +126,7 @@
     <link href="http://glm406.club/2019/07/08/redis-nei-cun-shu-ju-ku/"/>
     <id>http://glm406.club/2019/07/08/redis-nei-cun-shu-ju-ku/</id>
     <published>2019-07-07T16:00:00.000Z</published>
-    <updated>2019-08-20T01:39:11.045Z</updated>
+    <updated>2019-08-20T01:44:02.334Z</updated>
     
     <summary type="html">
     
