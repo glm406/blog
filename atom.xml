@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://glm406.club/"/>
-  <updated>2019-07-22T07:40:59.055Z</updated>
+  <updated>2019-07-22T16:16:03.455Z</updated>
   <id>http://glm406.club/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://glm406.club/2019/07/22/wei-shi-me-shi-yong-mq/"/>
+    <id>http://glm406.club/2019/07/22/wei-shi-me-shi-yong-mq/</id>
+    <published>2019-07-22T15:27:36.830Z</published>
+    <updated>2019-07-22T16:16:03.455Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;为什么使用消息队列&quot;&gt;&lt;a href=&quot;#为什么使用消息队列&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>vue框架学习笔记</title>
@@ -76,7 +98,7 @@
     <link href="http://glm406.club/2019/07/08/redis-nei-cun-shu-ju-ku/"/>
     <id>http://glm406.club/2019/07/08/redis-nei-cun-shu-ju-ku/</id>
     <published>2019-07-07T16:00:00.000Z</published>
-    <updated>2019-07-08T02:47:05.144Z</updated>
+    <updated>2019-08-20T01:39:11.045Z</updated>
     
     <summary type="html">
     
@@ -85,7 +107,7 @@
         
         
           &lt;hr&gt;
-&lt;p&gt;#
+&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;Redis是一个开源的使用ANSI
         
       
     
@@ -95,33 +117,6 @@
     
     
       <category term="redis" scheme="http://glm406.club/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学习hibernate</title>
-    <link href="http://glm406.club/2019/06/25/hibernate-kuang-jia/"/>
-    <id>http://glm406.club/2019/06/25/hibernate-kuang-jia/</id>
-    <published>2019-06-25T06:59:04.000Z</published>
-    <updated>2019-06-25T08:52:00.944Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;hr&gt;
-&lt;h1 id=&quot;学习hibernate&quot;&gt;&lt;a href=&quot;#学习hibernate&quot; class=&quot;headerlink&quot; title=&quot;学习hibernate&quot;&gt;&lt;/a&gt;学习hibernate&lt;/h1&gt;&lt;h2 id=&quot;一、什么是hibernate框架&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="hibernate" scheme="http://glm406.club/categories/hibernate/"/>
-    
-    
-      <category term="hibernate" scheme="http://glm406.club/tags/hibernate/"/>
     
   </entry>
   
@@ -140,6 +135,33 @@
         
           &lt;hr&gt;
 &lt;h1 id=&quot;hibernate-复杂查询&quot;&gt;&lt;a href=&quot;#hibernate-复杂查询&quot; class=&quot;headerlink&quot; title=&quot;hibernate 复杂查询&quot;&gt;&lt;/a&gt;hibernate 复杂查询&lt;/h1&gt;&lt;h1
+        
+      
+    
+    </summary>
+    
+      <category term="hibernate" scheme="http://glm406.club/categories/hibernate/"/>
+    
+    
+      <category term="hibernate" scheme="http://glm406.club/tags/hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习hibernate</title>
+    <link href="http://glm406.club/2019/06/25/hibernate-kuang-jia/"/>
+    <id>http://glm406.club/2019/06/25/hibernate-kuang-jia/</id>
+    <published>2019-06-25T06:59:04.000Z</published>
+    <updated>2019-06-25T08:52:00.944Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;hr&gt;
+&lt;h1 id=&quot;学习hibernate&quot;&gt;&lt;a href=&quot;#学习hibernate&quot; class=&quot;headerlink&quot; title=&quot;学习hibernate&quot;&gt;&lt;/a&gt;学习hibernate&lt;/h1&gt;&lt;h2 id=&quot;一、什么是hibernate框架&quot;&gt;&lt;a
         
       
     

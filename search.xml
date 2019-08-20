@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2019/07/22/wei-shi-me-shi-yong-mq/"/>
+      <url>/2019/07/22/wei-shi-me-shi-yong-mq/</url>
+      
+        <content type="html"><![CDATA[<h1 id="为什么使用消息队列"><a href="#为什么使用消息队列" class="headerlink" title="为什么使用消息队列?"></a>为什么使用消息队列?</h1><ol><li>异步处理</li><li>系统解耦</li><li>流量削峰<h1 id="为什么要使用RabbitMQ？"><a href="#为什么要使用RabbitMQ？" class="headerlink" title="为什么要使用RabbitMQ？"></a>为什么要使用RabbitMQ？</h1></li><li>基于AMQP协议</li><li>填吐量达到万级</li><li>高并发（Elarng语言开发，高性能）</li><li>高性能</li><li>高可用</li><li>强大的社区支持，以及汗多公司都在使用</li><li>支持插件（监控管理的界面）</li><li>支持多语言<h1 id="RabbitMQ缺点"><a href="#RabbitMQ缺点" class="headerlink" title="RabbitMQ缺点"></a>RabbitMQ缺点</h1></li><li>Elarng语言开发，阅读修改困难</li><li>不是分布式的<h2 id="镜像集群模式（高可用）"><a href="#镜像集群模式（高可用）" class="headerlink" title="镜像集群模式（高可用）"></a>镜像集群模式（高可用）</h2>每个节点上都有这个queue的一个完整镜像，就是包含了queue的全部数据的意思<br>缺点：不是分布式的<h1 id="缺点、问题"><a href="#缺点、问题" class="headerlink" title="缺点、问题"></a>缺点、问题</h1></li><li>系统可用性降低，我都是生成环境遇到很多坑爹的问题<br> MQ一旦故障，系统A就没法发送消息到MQ了，然后其他系统也没办法消费到消息了。</li><li>导致系统要考虑的问题变多，进而导致系统复杂性变高<br> 系统A本来只需要发送一条数据给系统B，结果因为系统A和MQ之间协调出现一些问题，系统A不小心把同一条数据给系统B发送了两次，导致系统B内部插入了2条一模一样的数据</li><li>发送到消息队列张的数据丢失</li><li>怎么保证拿到的数据按顺序执行</li><li>生产事故，几百万的消息在消息队列里积压了几个小时</li><li>一致性问题，有人给系统A发送了个请求，本来这个请求应该是ABCD都执行成功才能返回结果，系统ABC执行都成功了，系统D执行失败了，导致整个请求给用户返回的是成功，结果后台逻辑实际还差了点，没有完全执行完。<br># </li></ol>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vue框架学习笔记</title>
       <link href="/2019/07/22/vue-kuang-jia-xue-xi-bi-ji/"/>
       <url>/2019/07/22/vue-kuang-jia-xue-xi-bi-ji/</url>
@@ -58,7 +71,7 @@
       <link href="/2019/07/08/redis-nei-cun-shu-ju-ku/"/>
       <url>/2019/07/08/redis-nei-cun-shu-ju-ku/</url>
       
-        <content type="html"><![CDATA[<hr><p># </p>]]></content>
+        <content type="html"><![CDATA[<hr><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助。</p><h1 id="阿里云服务器安装redis"><a href="#阿里云服务器安装redis" class="headerlink" title="阿里云服务器安装redis"></a>阿里云服务器安装redis</h1><h1 id="centos版本"><a href="#centos版本" class="headerlink" title="centos版本"></a>centos版本</h1><pre><code>cat /etc/redhat-releaseCentOS Linux release 7.6.1810 (Core)</code></pre><h1 id="更新yum源"><a href="#更新yum源" class="headerlink" title="更新yum源"></a>更新yum源</h1><p>因为yum默认源软件不全或者版本过低，可以通过安装epel和remi源来安装最新版本的软件</p><h1 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h1><pre><code>yum install -y redis</code></pre><h1 id="redis基本命令"><a href="#redis基本命令" class="headerlink" title="redis基本命令"></a>redis基本命令</h1><pre><code># 启动systemctl start redis# 停止systemctl stop redis# 查看运行状态systemctl status redis# 重启systemctl restart redis# 开机启动systemctl enable redis# 开机禁用systemctl disable redis</code></pre><h2 id="命令行工具redis-cli基本使用验证"><a href="#命令行工具redis-cli基本使用验证" class="headerlink" title="命令行工具redis-cli基本使用验证"></a>命令行工具redis-cli基本使用验证</h2><pre><code># 启动redis-cliredis-cli </code></pre><p>#　redis-cli基本命令</p><pre><code>127.0.0.1:6379&gt; set msg &quot;hello world&quot;OK127.0.0.1:6379&gt; get msg&quot;hello world&quot;</code></pre><h1 id="开启远程连接"><a href="#开启远程连接" class="headerlink" title="开启远程连接"></a>开启远程连接</h1><h2 id="修改配置文件redis-conf"><a href="#修改配置文件redis-conf" class="headerlink" title="修改配置文件redis.conf"></a>修改配置文件redis.conf</h2><pre><code>vim /etc/redis.conf</code></pre><h1 id="开启远程连接-1"><a href="#开启远程连接-1" class="headerlink" title="开启远程连接"></a>开启远程连接</h1><pre><code>修改配置文件redis.confvim /etc/redis.conf</code></pre><h1 id="在阿里云控制台将redis默认端口开放"><a href="#在阿里云控制台将redis默认端口开放" class="headerlink" title="在阿里云控制台将redis默认端口开放"></a>在阿里云控制台将redis默认端口开放</h1>]]></content>
       
       
       <categories>
@@ -79,11 +92,11 @@
     
     
     <entry>
-      <title>学习hibernate</title>
-      <link href="/2019/06/25/hibernate-kuang-jia/"/>
-      <url>/2019/06/25/hibernate-kuang-jia/</url>
+      <title>hibernate 复杂查询</title>
+      <link href="/2019/06/25/hibernatehql/"/>
+      <url>/2019/06/25/hibernatehql/</url>
       
-        <content type="html"><![CDATA[<hr><h1 id="学习hibernate"><a href="#学习hibernate" class="headerlink" title="学习hibernate"></a>学习hibernate</h1><h2 id="一、什么是hibernate框架"><a href="#一、什么是hibernate框架" class="headerlink" title="一、什么是hibernate框架"></a>一、什么是hibernate框架</h2><ol><li>hibernate是一个开源的对象映射框架</li><li>hibernate可以实现数据库中表和实体类的映射关系，自动生成sql语句并执行（全自动）</li><li>hibernate是一个全自动（自动生成sql）的持久层框架，可以采用面向对象的方式来对数据库进行CRUD操作<h2 id="二、hibernate的使用"><a href="#二、hibernate的使用" class="headerlink" title="二、hibernate的使用"></a>二、hibernate的使用</h2><pre class=" language-bash"><code class="language-bash">@Id//主键@Column<span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"user_id"</span><span class="token punctuation">)</span>//定义一个序列@SequenceGenerator<span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"gen"</span>,sequenceName <span class="token operator">=</span> <span class="token string">"seq_t_ssh_user"</span>,allocationSize <span class="token operator">=</span> 1<span class="token punctuation">)</span>//    自增策略@GeneratedValue<span class="token punctuation">(</span>generator <span class="token operator">=</span> <span class="token string">"gen"</span>,strategy <span class="token operator">=</span> GenerationType.SEQUENCE<span class="token punctuation">)</span></code></pre></li></ol>]]></content>
+        <content type="html"><![CDATA[<hr><h1 id="hibernate-复杂查询"><a href="#hibernate-复杂查询" class="headerlink" title="hibernate 复杂查询"></a>hibernate 复杂查询</h1><h1 id="hibernate多表关联查询"><a href="#hibernate多表关联查询" class="headerlink" title="hibernate多表关联查询"></a>hibernate多表关联查询</h1><h2 id="表之间的关系分类"><a href="#表之间的关系分类" class="headerlink" title="表之间的关系分类"></a>表之间的关系分类</h2><blockquote><p>一对一<br>学生和学生卡<br>一对多<br>班级和学生<br>多对多<br>学生和老师<br>需要中间表 t_student_teacher</p></blockquote><h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><pre class=" language-bash"><code class="language-bash">    核心异常：Caused by: org.hibernate.AnnotationException: @OneToOne or @ManyToOne on com.xiaomo.xxxx.model.yyy.Clock.user references an unknown entity: com.xiaomo.zzzz.model.user.User</code></pre><p>今天写一个Action 通过 HQL 查询一个表 出现异常 “More than one row with the given identifier was found”</p><p>问题原因： 数据库出现数据异常 存在多条主键不唯一的数据 (看来ORACLE也会出BUG呀)</p><p>问题解决： 找到数据库表 删除全部数据 然后重新导入 问题没了</p><h1 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h1><pre class=" language-bash"><code class="language-bash">@OneToOne<span class="token punctuation">(</span>fetch<span class="token operator">=</span>FetchType.LAZY<span class="token punctuation">)</span></code></pre>]]></content>
       
       
       <categories>
@@ -104,11 +117,11 @@
     
     
     <entry>
-      <title>hibernate 复杂查询</title>
-      <link href="/2019/06/25/hibernatehql/"/>
-      <url>/2019/06/25/hibernatehql/</url>
+      <title>学习hibernate</title>
+      <link href="/2019/06/25/hibernate-kuang-jia/"/>
+      <url>/2019/06/25/hibernate-kuang-jia/</url>
       
-        <content type="html"><![CDATA[<hr><h1 id="hibernate-复杂查询"><a href="#hibernate-复杂查询" class="headerlink" title="hibernate 复杂查询"></a>hibernate 复杂查询</h1><h1 id="hibernate多表关联查询"><a href="#hibernate多表关联查询" class="headerlink" title="hibernate多表关联查询"></a>hibernate多表关联查询</h1><h2 id="表之间的关系分类"><a href="#表之间的关系分类" class="headerlink" title="表之间的关系分类"></a>表之间的关系分类</h2><blockquote><p>一对一<br>学生和学生卡<br>一对多<br>班级和学生<br>多对多<br>学生和老师<br>需要中间表 t_student_teacher</p></blockquote><h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><pre class=" language-bash"><code class="language-bash">    核心异常：Caused by: org.hibernate.AnnotationException: @OneToOne or @ManyToOne on com.xiaomo.xxxx.model.yyy.Clock.user references an unknown entity: com.xiaomo.zzzz.model.user.User</code></pre><p>今天写一个Action 通过 HQL 查询一个表 出现异常 “More than one row with the given identifier was found”</p><p>问题原因： 数据库出现数据异常 存在多条主键不唯一的数据 (看来ORACLE也会出BUG呀)</p><p>问题解决： 找到数据库表 删除全部数据 然后重新导入 问题没了</p><h1 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h1><pre class=" language-bash"><code class="language-bash">@OneToOne<span class="token punctuation">(</span>fetch<span class="token operator">=</span>FetchType.LAZY<span class="token punctuation">)</span></code></pre>]]></content>
+        <content type="html"><![CDATA[<hr><h1 id="学习hibernate"><a href="#学习hibernate" class="headerlink" title="学习hibernate"></a>学习hibernate</h1><h2 id="一、什么是hibernate框架"><a href="#一、什么是hibernate框架" class="headerlink" title="一、什么是hibernate框架"></a>一、什么是hibernate框架</h2><ol><li>hibernate是一个开源的对象映射框架</li><li>hibernate可以实现数据库中表和实体类的映射关系，自动生成sql语句并执行（全自动）</li><li>hibernate是一个全自动（自动生成sql）的持久层框架，可以采用面向对象的方式来对数据库进行CRUD操作<h2 id="二、hibernate的使用"><a href="#二、hibernate的使用" class="headerlink" title="二、hibernate的使用"></a>二、hibernate的使用</h2><pre class=" language-bash"><code class="language-bash">@Id//主键@Column<span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"user_id"</span><span class="token punctuation">)</span>//定义一个序列@SequenceGenerator<span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"gen"</span>,sequenceName <span class="token operator">=</span> <span class="token string">"seq_t_ssh_user"</span>,allocationSize <span class="token operator">=</span> 1<span class="token punctuation">)</span>//    自增策略@GeneratedValue<span class="token punctuation">(</span>generator <span class="token operator">=</span> <span class="token string">"gen"</span>,strategy <span class="token operator">=</span> GenerationType.SEQUENCE<span class="token punctuation">)</span></code></pre></li></ol>]]></content>
       
       
       <categories>
