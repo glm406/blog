@@ -5,18 +5,9 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="李白—戒酒">
-    <meta name="description" content="为什么使用消息队列?
-异步处理
-系统解耦
-流量削峰为什么要使用RabbitMQ？
-基于AMQP协议
-填吐量达到万级
-高并发（Elarng语言开发，高性能）
-高性能
-高可用
-强大的社区支持，以及汗多公司都在使用
-支持插件（监控管理的界面）
-支">
+    <meta name="description" content="#MySQL里获取当前week、month、quarter的第一天/最后一天
+#当前week的第一天：    select date_sub(curdate(),INTERVAL WEEKDAY(curdate()) + 1 DAY)
+#当">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -396,14 +387,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-07-22
+                    2019-09-17
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        453
+                        360
                     </div>
                     
 
@@ -426,27 +417,25 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="为什么使用消息队列"><a href="#为什么使用消息队列" class="headerlink" title="为什么使用消息队列?"></a>为什么使用消息队列?</h1><ol>
-<li>异步处理</li>
-<li>系统解耦</li>
-<li>流量削峰<h1 id="为什么要使用RabbitMQ？"><a href="#为什么要使用RabbitMQ？" class="headerlink" title="为什么要使用RabbitMQ？"></a>为什么要使用RabbitMQ？</h1></li>
-<li>基于AMQP协议</li>
-<li>填吐量达到万级</li>
-<li>高并发（Elarng语言开发，高性能）</li>
-<li>高性能</li>
-<li>高可用</li>
-<li>强大的社区支持，以及汗多公司都在使用</li>
-<li>支持插件（监控管理的界面）</li>
-<li>支持多语言<h1 id="RabbitMQ缺点"><a href="#RabbitMQ缺点" class="headerlink" title="RabbitMQ缺点"></a>RabbitMQ缺点</h1></li>
-<li>Elarng语言开发，阅读修改困难</li>
-<li>不是分布式的<h2 id="镜像集群模式（高可用）"><a href="#镜像集群模式（高可用）" class="headerlink" title="镜像集群模式（高可用）"></a>镜像集群模式（高可用）</h2>每个节点上都有这个queue的一个完整镜像，就是包含了queue的全部数据的意思<br>缺点：不是分布式的<h1 id="缺点、问题"><a href="#缺点、问题" class="headerlink" title="缺点、问题"></a>缺点、问题</h1></li>
-<li>系统可用性降低，我都是生成环境遇到很多坑爹的问题<br> MQ一旦故障，系统A就没法发送消息到MQ了，然后其他系统也没办法消费到消息了。</li>
-<li>导致系统要考虑的问题变多，进而导致系统复杂性变高<br> 系统A本来只需要发送一条数据给系统B，结果因为系统A和MQ之间协调出现一些问题，系统A不小心把同一条数据给系统B发送了两次，导致系统B内部插入了2条一模一样的数据</li>
-<li>发送到消息队列张的数据丢失</li>
-<li>怎么保证拿到的数据按顺序执行</li>
-<li>生产事故，几百万的消息在消息队列里积压了几个小时</li>
-<li>一致性问题，有人给系统A发送了个请求，本来这个请求应该是ABCD都执行成功才能返回结果，系统ABC执行都成功了，系统D执行失败了，导致整个请求给用户返回的是成功，结果后台逻辑实际还差了点，没有完全执行完。<br># </li>
-</ol>
+                <p>#MySQL里获取当前week、month、quarter的第一天/最后一天</p>
+<p>#当前week的第一天：<br>    select date_sub(curdate(),INTERVAL WEEKDAY(curdate()) + 1 DAY)</p>
+<p>#当前week的最后一天：<br>    select date_sub(curdate(),INTERVAL WEEKDAY(curdate()) – 5 DAY)</p>
+<p>#前一week的第一天：<br>    select date_sub(curdate(),INTERVAL WEEKDAY(curdate()) + 8 DAY)</p>
+<p>#前一week的最后一天：<br>    select date_sub(curdate(),INTERVAL WEEKDAY(curdate()) + 2 DAY)</p>
+<p>#前两week的第一天：<br>    select date_sub(curdate(),INTERVAL WEEKDAY(curdate()) + 15 DAY)</p>
+<p>#前两week的最后一天：<br>    select date_sub(curdate(),INTERVAL WEEKDAY(curdate()) + 9 DAY)</p>
+<p>#当前month的第一天：<br>    SELECT concat(date_format(LAST_DAY(now()),’%Y-%m-‘),’01’)<br>    SELECT DATE_SUB(curdate(),interval day(now())-1 day)</p>
+<p>#当前month的最后一天：<br>    SELECT LAST_DAY(now())</p>
+<p>#前一month的第一天：<br>    SELECT concat(date_format(LAST_DAY(now() – interval 1 month),’%Y-%m-‘),’01’)<br>    select date_add(curdate()-day(curdate())+1,interval -1 month)</p>
+<p>#前一month的最后一天：<br>    SELECT LAST_DAY(now() – interval 1 month)</p>
+<p>#前两month的第一天：<br>    SELECT concat(date_format(LAST_DAY(now() – interval 2 month),’%Y-%m-‘),’01’)</p>
+<p>#前两month的最后一天：<br>    SELECT LAST_DAY(now() – interval 2 month)</p>
+<p>#当前quarter的第一天：<br>    select concat(date_format(LAST_DAY(MAKEDATE(EXTRACT(YEAR FROM CURDATE()),1) + interval QUARTER(CURDATE())*3-3 month),’%Y-%m-‘),’01’)</p>
+<p>#当前quarter的最后一天：<br>    select LAST_DAY(MAKEDATE(EXTRACT(YEAR FROM CURDATE()),1) + interval QUARTER(CURDATE())*3-1 month)</p>
+<p>#前一quarter的第一天：<br>    select concat(date_format(LAST_DAY(MAKEDATE(EXTRACT(YEAR FROM CURDATE()),1) + interval QUARTER(CURDATE())*3-6 month),’%Y-%m-‘),’01’)</p>
+<p>#前一quarter的最后一天：<br>    select LAST_DAY(MAKEDATE(EXTRACT(YEAR FROM CURDATE()),1) + interval QUARTER(CURDATE())*3-4 month)</p>
+<p>#前两quarter的第一天：<br>    select concat(date_format(LAST_DAY(MAKEDATE(EXTRACT(YEAR FROM CURDATE()),1) + interval QUARTER(CURDATE())*3-9 month),’%Y-%m-‘),’01’)</p>
+<p>#前两quarter的最后一天：<br>    select LAST_DAY(MAKEDATE(EXTRACT(YEAR FROM CURDATE()),1) + interval QUARTER(CURDATE())*3-7 month)</p>
 
             </div>
             <hr>
@@ -604,7 +593,7 @@
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
                     《》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/22/wei-shi-me-shi-yong-mq/" property="cc:attributionName" rel="cc:attributionURL">
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/17/mysql-li-huo-qu-shi-jian-zhou-yue-ji-du-di-yi-tian-huo-zui-hou-yi-tian/" property="cc:attributionName" rel="cc:attributionURL">
                 李白—戒酒
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
@@ -644,7 +633,7 @@
         repo: 'glm406.github.io',
         owner: 'glm406',
         admin: "glm406",
-        id: '2019-07-22T23-27-36',
+        id: '2019-09-17T16-48-58',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -667,7 +656,48 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2019/09/17/mysql-li-huo-qu-shi-jian-zhou-yue-ji-du-di-yi-tian-huo-zui-hou-yi-tian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt>
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            #MySQL里获取当前week、month、quarter的第一天/最后一天
+#当前week的第一天：    select date_sub(curdate(),INTERVAL WEEKDAY(curdate()) + 1 DAY)
+#当
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            李白—戒酒
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2019/08/20/fen-ceng-ling-yu-mo-xing-gui-yue/">
                     <div class="card-image">
@@ -685,9 +715,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -705,55 +735,6 @@
                     
                     <a href="/tags/java/" target="_blank">
                         <span class="chip bg-color">java</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/07/22/vue-kuang-jia-xue-xi-bi-ji/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="vue框架学习笔记">
-                        
-                        <span class="card-title">vue框架学习笔记</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            vue框架学习笔记
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-22
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/vue/" class="post-category" target="_blank">
-                                    vue
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/vue/" target="_blank">
-                        <span class="chip bg-color">vue</span>
                     </a>
                     
                 </div>
